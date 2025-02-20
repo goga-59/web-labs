@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOT Premium Магазин</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>WOT Premium Магазин</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Новости</a></li>
+            <li><a href="/catalog">Каталог</a></li>
+            <li><a href="/info">Доставка и оплата</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2>Каталог премиум танков</h2>
+    <div class="catalog">
+        <div class="product" th:each="tankCard : ${tankCards}">
+            <img th:src="@{${tankCard.image}}" alt="Танк">
+            <h3 th:text="${tankCard.title}"></h3>
+            <p th:text="${tankCard.description}"></p>
+            <p>Цена: <span th:text="${tankCard.price}"></span> золота</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 WOT Premium Магазин</p>
+</footer>
+</body>
+</html>

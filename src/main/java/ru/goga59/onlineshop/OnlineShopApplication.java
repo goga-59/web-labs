@@ -1,4 +1,4 @@
-package ru.goga59.online_shop;
+package ru.goga59.onlineshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

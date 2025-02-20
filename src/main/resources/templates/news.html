@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOT Новости</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>WOT Premium Магазин</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Новости</a></li>
+            <li><a href="/catalog">Каталог</a></li>
+            <li><a href="/info">Доставка и оплата</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2>Последние новости</h2>
+    <div class="news-container">
+        <article th:each="news : ${newsList}">
+            <h3 th:text="${news.title}"></h3>
+            <p th:text="${news.content}"></p>
+            <small th:text="${news.date}"></small>
+        </article>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 WOT Новости</p>
+</footer>
+</body>
+</html>

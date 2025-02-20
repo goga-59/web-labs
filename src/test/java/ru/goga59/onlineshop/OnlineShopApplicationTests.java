@@ -1,4 +1,4 @@
-package ru.goga59.online_shop;
+package ru.goga59.onlineshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
