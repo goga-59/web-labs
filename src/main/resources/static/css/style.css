@@ -3,17 +3,20 @@ html {
     margin: 0;
     display: flex;
     flex-direction: column;
+    overscroll-behavior: none;
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
     background: linear-gradient(135deg, #1a1a1a, #333);
     color: white;
     display: flex;
     flex-direction: column;
     height: 100%;
     flex: 1;
+    overscroll-behavior: none;
+    padding: 90px 0 0;
 }
 
 header, footer {
@@ -22,6 +25,15 @@ header, footer {
     padding: 20px;
     text-align: center;
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+}
+
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
 }
 
 footer {
@@ -54,6 +66,17 @@ nav ul li a:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 
+
+/* Каталог */
+.catalog-section {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.catalog-section h2 {
+    text-align: center;
+}
+
 .catalog {
     display: flex;
     flex-wrap: wrap;
@@ -61,8 +84,8 @@ nav ul li a:hover {
     padding: 20px;
 }
 
-.product {
-    background: #2a2a2a;
+.product-container {
+    background: #3a3a3a;
     padding: 15px;
     margin: 10px;
     border-radius: 10px;
@@ -72,14 +95,26 @@ nav ul li a:hover {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
-.product:hover {
+.product-container:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(255, 165, 0, 0.6);
 }
 
-.product img {
+.product-container img {
     max-width: 100%;
     border-radius: 5px;
+}
+
+
+/* Новости */
+.news-section {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.news-section h2 {
+    margin: 20px;
+    text-align: center;
 }
 
 .news-container {
@@ -91,7 +126,7 @@ nav ul li a:hover {
 }
 
 .news-container article {
-    background: #2a2a2a;
+    background: #3a3a3a;
     padding: 15px;
     margin: 10px;
     border-radius: 10px;
@@ -124,15 +159,16 @@ nav ul li a:hover {
     color: #bbb;
 }
 
+
 /* Контакты */
 .contacts {
     text-align: center;
     padding: 30px;
-    background: #2a2a2a;
+    background: #3a3a3a;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
-    margin: 20px auto;
-    width: 50%;
+    margin: 100px auto;
+    width: 60%;
 }
 
 .contacts h2 {
@@ -155,13 +191,15 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+
+/* Доставка и оплата */
 .info {
     text-align: center;
     padding: 30px;
-    background: #2a2a2a;
+    background: #3a3a3a;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
-    margin: 20px auto;
+    margin: 100px auto;
     width: 60%;
 }
 
@@ -189,5 +227,180 @@ nav ul li a:hover {
 }
 
 .info a:hover {
+    text-decoration: underline;
+}
+
+
+/* 404 */
+.error-404 {
+    text-align: center;
+    padding: 50px;
+    background: #3a3a3a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+    margin: 50px auto;
+    width: 50%;
+}
+
+.error-404 h2 {
+    color: #f1c40f;
+    font-size: 28px;
+}
+
+.error-404 p {
+    color: #ddd;
+    font-size: 18px;
+}
+
+.error-404 a {
+    color: orange;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.error-404 a:hover {
+    text-decoration: underline;
+}
+
+
+/*Форма заказа */
+.modal {
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.modal-content {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+    width: 35%;
+    text-align: center;
+    margin: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.product-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.remove-product {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#add-product {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.close-button {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #f1c40f;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: #444;
+    color: white;
+}
+
+.submit-button {
+    background: orange;
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background: #ff9800;
+}
+
+#open-order-form {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#open-order-form:hover {
+    background: #e08900;
+}
+
+
+/* success */
+.success-container {
+    text-align: center;
+    padding: 50px;
+    background: #2a2a2a;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+    width: 50%;
+    margin: 90px auto;
+}
+
+.success-container h2 {
+    color: #4CAF50;
+}
+
+.success-container a {
+    color: orange;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.success-container a:hover {
     text-decoration: underline;
 }
