@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@Entity @Table(name = "tank_card")
-public final class TankCardModel {
+@Entity @Table(name = "product")
+public final class ProductModel {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
