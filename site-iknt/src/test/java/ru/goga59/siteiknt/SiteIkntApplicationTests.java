@@ -1,4 +1,4 @@
-package ru.goga59.site_iknt;
+package ru.goga59.siteiknt;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
