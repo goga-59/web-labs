@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <title>Калькулятор систем счисления</title>
+    <script src="/js/script.js" defer></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body onload="updateButtons()">
+<h1>Калькулятор систем счисления</h1>
+<form onsubmit="convertNumber(); return false;">
+    <label>Исходная система счисления:
+        <select id="from" name="from" onchange="updateButtons()">
+            <option value="" selected disabled>Выберите систему</option>
+            <option th:each="i : ${#numbers.sequence(2, 16)}" th:value="${i}" th:text="${i}"></option>
+        </select>
+    </label>
+
+    <label>Целевая система счисления:
+        <select id="to" name="to">
+            <option value="" selected disabled>Выберите систему</option>
+            <option th:each="i : ${#numbers.sequence(2, 16)}" th:value="${i}" th:text="${i}"></option>
+        </select>
+    </label>
+
+    <label>
+        <input type="text" id="numberInput" name="number" readonly>
+    </label>
+
+    <div class="calculator-grid">
+        <button type="button" class="digit-button" onclick="appendDigit('0')">0</button>
+        <button type="button" class="digit-button" onclick="appendDigit('1')">1</button>
+        <button type="button" class="digit-button" onclick="appendDigit('2')">2</button>
+        <button type="button" class="digit-button" onclick="appendDigit('3')">3</button>
+        <button type="button" class="digit-button" onclick="appendDigit('4')">4</button>
+        <button type="button" class="digit-button" onclick="appendDigit('5')">5</button>
+        <button type="button" class="digit-button" onclick="appendDigit('6')">6</button>
+        <button type="button" class="digit-button" onclick="appendDigit('7')">7</button>
+        <button type="button" class="digit-button" onclick="appendDigit('8')">8</button>
+        <button type="button" class="digit-button" onclick="appendDigit('9')">9</button>
+        <button type="button" class="digit-button" onclick="appendDigit('A')">A</button>
+        <button type="button" class="digit-button" onclick="appendDigit('B')">B</button>
+        <button type="button" class="digit-button" onclick="appendDigit('C')">C</button>
+        <button type="button" class="digit-button" onclick="appendDigit('D')">D</button>
+        <button type="button" class="digit-button" onclick="appendDigit('E')">E</button>
+        <button type="button" class="digit-button" onclick="appendDigit('F')">F</button>
+    </div>
+
+    <button type="button" onclick="deleteDigit()" id="deleteButton">Удалить</button>
+    <button type="submit">Конвертировать</button>
+    <button type="button" onclick="clearInput()">Сброс</button>
+</form>
+
+<h2>Результат:</h2>
+<p id="result"></p>
+</body>
+</html>
