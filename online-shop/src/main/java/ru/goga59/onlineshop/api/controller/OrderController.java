@@ -25,8 +25,8 @@ public class OrderController {
             @RequestParam String paymentMethod,
             @RequestParam String comment,
             @RequestParam List<String> product,
-            @RequestParam List<Integer> quantity) {
-
+            @RequestParam List<Integer> quantity
+    ) {
         orderService.createOrder(customerName, email, phone, tankNick, paymentMethod, comment, product, quantity);
         return "success";
     }
