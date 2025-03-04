@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Админ-панель</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <h1>Панель администратора</h1>
+  <nav>
+    <ul>
+      <li><a href="/admin/products">Товары</a></li>
+      <li><a href="/admin/orders">Заказы</a></li>
+      <li><a href="/admin/news">Новости</a></li>
+      <li><a href="/logout">Выйти</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h2 class="admin-h2">Управление заказами</h2>
+
+<div id="update-order-form" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Редактирование заказа</h2>
+    <form action="/admin/orders/update" method="post">
+      <input type="hidden" id="id" name="id">
+
+      <div class="form-group">
+        <label for="customerName">Ваше имя:</label>
+        <input type="text" id="customerName" name="customerName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">Дата рождения:</label>
+        <input type="date" id="birthDate" name="birthDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="tankNick">Танковый ник:</label>
+        <input type="text" id="tankNick" name="tankNick" required>
+      </div>
+
+      <div id="products-container">
+        <div class="form-group product-group">
+          <label for="product">Выберите товар:</label>
+          <select id="product" name="product" required onchange="updateForm()">
+            <option value="" data-price="0" selected disabled>Выберите товар</option>
+            <option th:each="product : ${products}" th:value="${product.id}" th:data-price="${product.price}" th:text="${product.title}"></option>
+          </select>
+          <label for="quantity">Количество:</label>
+          <input id="quantity" type="number" name="quantity" min="0" value="" required oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateForm();">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paymentMethod">Способ оплаты:</label>
+        <select id="paymentMethod" name="paymentMethod">
+          <option value="card">Банковская карта</option>
+          <option value="wallet">Электронный кошелек</option>
+          <option value="crypto">Криптовалюта</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Комментарий:</label>
+        <textarea id="comment" name="comment" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="total-price">Итоговая стоимость:</label>
+        <span id="total-price">0 руб.</span>
+      </div>
+
+      <button type="submit" class="submit-button">✅ Подтвердить заказ</button>
+    </form>
+  </div>
+</div>
+
+<table class="admin-table">
+  <tr>
+    <th>Имя</th>
+    <th>Дата рождения</th>
+    <th>Почта</th>
+    <th>Номер телефона</th>
+    <th>Ник</th>
+    <th>Оплата</th>
+    <th>Комментарий</th>
+    <th>Товар</th>
+    <th>Количество</th>
+    <th>Действия</th>
+  </tr>
+  <tr th:each="order : ${orders}" id="order-row-[[${order.id}]]">
+    <td th:text="${order.name}"></td>
+    <td th:text="${order.birthDate}"></td>
+    <td th:text="${order.email}"></td>
+    <td th:text="${order.phone}"></td>
+    <td th:text="${order.nickname}"></td>
+    <td th:text="${order.paymentMethod}"></td>
+    <td th:text="${order.comment}"></td>
+    <td th:text="${order.product}"></td>
+    <td th:text="${order.quantity}"></td>
+    <td>
+      <button type="button" onclick="openUpdateForm(this)"
+              th:attr="id=${order.id}, name=${order.name}, email=${order.email}, birthDate=${order.birthDate}, phone=${order.phone},
+              nickname=${order.nickname}, paymentMethod=${order.paymentMethod}, comment=${order.comment}, product=${order.product}, quantity=${order.quantity}">
+        ✏ Редактировать
+      </button>
+      <button class="delete-button" th:attr="data-id=${order.id}" onclick="confirmDelete(this)">🗑 Удалить</button>
+    </td>
+  </tr>
+</table>
+
+<script>
+  document.querySelectorAll('.close-button').forEach(button => {
+    button.addEventListener('click', function () {
+      document.getElementById('update-order-form').style.display = 'none';
+    });
+  });
+
+  function openUpdateForm(button) {
+    document.getElementById('id').value = button.getAttribute('id')
+    document.getElementById('customerName').value = button.getAttribute('name');
+    document.getElementById('birthDate').value = button.getAttribute('birthDate');
+    document.getElementById('email').value = button.getAttribute('email');
+    document.getElementById('phone').value = button.getAttribute('phone');
+    document.getElementById('tankNick').value = button.getAttribute('nickname');
+    document.getElementById('paymentMethod').value = button.getAttribute('paymentMethod');
+    document.getElementById('comment').value = button.getAttribute('comment');
+    document.getElementById('product').value = button.getAttribute('product');
+    document.getElementById('quantity').value = button.getAttribute('quantity');
+
+    document.getElementById('update-order-form').style.display = 'flex';
+  }
+
+  function confirmDelete(button) {
+    let orderId = button.getAttribute("data-id");
+    if (confirm("Вы уверены, что хотите удалить этот заказ?")) {
+      window.location.href = "/admin/orders/delete/" + orderId;
+    }
+  }
+</script>
+</body>
+</html>

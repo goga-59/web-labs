@@ -289,31 +289,13 @@ nav ul li a:hover {
     margin: auto;
     max-height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .product-group {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.remove-product {
-    background: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#add-product {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
 }
 
 .close-button {
@@ -329,6 +311,7 @@ nav ul li a:hover {
 .form-group {
     margin-bottom: 15px;
     text-align: left;
+    width: 96%;
 }
 
 .form-group label {
@@ -403,4 +386,55 @@ nav ul li a:hover {
 
 .success-container a:hover {
     text-decoration: underline;
+}
+
+/* admin product */
+.admin-h1 {
+    margin: 120px auto;
+}
+
+.admin-h2 {
+    margin: 90px auto 20px;
+}
+
+#open-add-product-form {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+    border: 2px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.admin-table th {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+.admin-table tr:nth-child(odd) {
+    background-color: #2a2a2a;
+}
+
+.admin-table tr:hover {
+    background-color: rgba(255, 165, 0, 0.3);
 }

@@ -3,10 +3,14 @@ package ru.goga59.onlineshop.storage.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CollectionId;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity @Table(name = "orders")
 public class OrderModel {
@@ -15,26 +19,33 @@ public class OrderModel {
     private Long id;
 
     private String name;
+
+    private String birthDate;
+
     private String email;
+
     private String phone;
+
     private String nickname;
+
+    @Column(name = "payment_method")
     private String paymentMethod;
+
     private String comment;
 
-    @ElementCollection
-    private List<String> products;
+    private String product;
 
-    @ElementCollection
-    private List<Integer> quantities;
+    private Integer quantity;
 
-    public OrderModel(String customerName, String email, String phone, String tankNick, String paymentMethod, String comment, List<String> products, List<Integer> quantities) {
+    public OrderModel(String customerName, String birthDate, String email, String phone, String tankNick, String paymentMethod, String comment, String product, Integer quantity) {
         this.name = customerName;
+        this.birthDate = birthDate;
         this.email = email;
         this.phone = phone;
         this.nickname = tankNick;
         this.paymentMethod = paymentMethod;
         this.comment = comment;
-        this.products = products;
-        this.quantities = quantities;
+        this.product = product;
+        this.quantity = quantity;
     }
 }

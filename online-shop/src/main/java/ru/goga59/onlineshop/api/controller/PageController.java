@@ -37,9 +37,14 @@ public class PageController {
 
     @GetMapping("/catalog")
     public String toCatalogPage(Model model) {
-        List<ProductModel> tankCards = tankCardService.getAllTanks();
+        List<ProductModel> tankCards = tankCardService.getAllProducts();
         model.addAttribute("productCards", tankCards);
         return "catalog";
+    }
+
+    @GetMapping("/admin")
+    public String toAdminPage() {
+        return "admin";
     }
 
 }
