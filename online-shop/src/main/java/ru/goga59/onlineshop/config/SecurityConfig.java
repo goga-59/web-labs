@@ -30,9 +30,9 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagement -> sessionManagement
                         .maximumSessions(1))
                 .formLogin(login -> login
+                        .loginPage("/login")
                         .defaultSuccessUrl("/admin", true)
-                        .usernameParameter("username")
-                        .passwordParameter("password"))
+                        .permitAll())
                 .sessionManagement(sessionManagement -> sessionManagement
                         .maximumSessions(1))
                 .logout(logout -> logout

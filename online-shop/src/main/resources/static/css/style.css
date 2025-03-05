@@ -330,6 +330,10 @@ nav ul li a:hover {
     color: white;
 }
 
+.form-group textarea {
+    resize: vertical;
+}
+
 .submit-button {
     background: orange;
     color: black;
@@ -441,4 +445,62 @@ nav ul li a:hover {
 
 .admin-table tr:hover {
     background-color: rgba(255, 165, 0, 0.3);
+}
+
+/* login */
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #3a3a3a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #f1c40f;
+    font-size: 24px;
+}
+
+.form-group-login {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group-login label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #f1c40f;
+}
+
+.form-group-login input {
+    width: 92.5%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: #444;
+    color: white;
+}
+
+.login-button {
+    background: orange;
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-button:hover {
+    background: #ff9800;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
 }

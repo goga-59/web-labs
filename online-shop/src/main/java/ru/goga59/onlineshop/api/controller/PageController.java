@@ -46,6 +46,11 @@ public class PageController {
         return "main_page";
     }
 
+    @GetMapping("/login")
+    public String toLoginPage() {
+        return "login_page";
+    }
+
     @GetMapping("/admin")
     public String toAdminPage(Model model) {
         model.addAttribute("content", "fragments/admin/admin_main");
