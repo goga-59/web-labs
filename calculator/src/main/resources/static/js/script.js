@@ -6,6 +6,7 @@ function updateButtons() {
         let buttonValue = parseInt(button.innerText, 16);
         button.disabled = isNaN(from) || buttonValue >= from;
     });
+    clearInput();
 }
 
 function appendDigit(digit) {
