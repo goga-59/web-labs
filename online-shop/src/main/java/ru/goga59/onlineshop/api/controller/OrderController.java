@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.goga59.onlineshop.api.service.OrderService;
 
-import java.time.LocalDate;
-import java.util.List;
-
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/submit/order")
