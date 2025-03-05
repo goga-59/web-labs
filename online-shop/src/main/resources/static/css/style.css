@@ -287,33 +287,15 @@ nav ul li a:hover {
     width: 35%;
     text-align: center;
     margin: auto;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .product-group {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.remove-product {
-    background: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#add-product {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 5px;
 }
 
 .close-button {
@@ -329,6 +311,7 @@ nav ul li a:hover {
 .form-group {
     margin-bottom: 15px;
     text-align: left;
+    width: 96%;
 }
 
 .form-group label {
@@ -345,6 +328,10 @@ nav ul li a:hover {
     border: 1px solid #555;
     background: #444;
     color: white;
+}
+
+.form-group textarea {
+    resize: vertical;
 }
 
 .submit-button {
@@ -403,4 +390,117 @@ nav ul li a:hover {
 
 .success-container a:hover {
     text-decoration: underline;
+}
+
+/* admin product */
+.admin-h1, .admin-h2 {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 120px auto 20px;
+}
+
+.admin-h2 {
+    margin: 90px auto 20px;
+}
+
+#open-add-product-form {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th, .admin-table td {
+    border: 2px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.admin-table th {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.admin-table tr:nth-child(even) {
+    background-color: #3a3a3a;
+}
+
+.admin-table tr:nth-child(odd) {
+    background-color: #2a2a2a;
+}
+
+.admin-table tr:hover {
+    background-color: rgba(255, 165, 0, 0.3);
+}
+
+/* login */
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #3a3a3a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #f1c40f;
+    font-size: 24px;
+}
+
+.form-group-login {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group-login label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #f1c40f;
+}
+
+.form-group-login input {
+    width: 92.5%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background: #444;
+    color: white;
+}
+
+.login-button {
+    background: orange;
+    color: black;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-button:hover {
+    background: #ff9800;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1>Панель администратора</h1>
+    <nav>
+        <ul>
+            <li><a href="/admin/products">Товары</a></li>
+            <li><a href="/admin/orders">Заказы</a></li>
+            <li><a href="/logout">Выйти</a></li>
+        </ul>
+    </nav>
+</header>
+<main th:replace="~{${content} :: content}"></main>
+</body>
+</html>

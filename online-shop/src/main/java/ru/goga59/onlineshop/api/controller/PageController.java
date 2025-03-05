@@ -22,24 +22,39 @@ public class PageController {
     public String toNewsPage(Model model) {
         List<NewsModel> newsList = newsService.getAllNews();
         model.addAttribute("newsList", newsList);
-        return "news";
+        model.addAttribute("content", "fragments/main/news");
+        return "main_page";
     }
 
     @GetMapping("/info")
-    public String toInfoPage() {
-        return "info";
+    public String toInfoPage(Model model) {
+        model.addAttribute("content", "fragments/main/info");
+        return "main_page";
     }
 
     @GetMapping("/contacts")
-    public String toContactsPage() {
-        return "contacts";
+    public String toContactsPage(Model model) {
+        model.addAttribute("content", "fragments/main/contacts");
+        return "main_page";
     }
 
     @GetMapping("/catalog")
     public String toCatalogPage(Model model) {
-        List<ProductModel> tankCards = tankCardService.getAllTanks();
-        model.addAttribute("productCards", tankCards);
-        return "catalog";
+        List<ProductModel> products = tankCardService.getAllProducts();
+        model.addAttribute("productList", products);
+        model.addAttribute("content", "fragments/main/catalog");
+        return "main_page";
+    }
+
+    @GetMapping("/login")
+    public String toLoginPage() {
+        return "login_page";
+    }
+
+    @GetMapping("/admin")
+    public String toAdminPage(Model model) {
+        model.addAttribute("content", "fragments/admin/admin_main");
+        return "admin_page";
     }
 
 }

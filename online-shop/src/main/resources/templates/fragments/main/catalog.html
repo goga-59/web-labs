@@ -1,0 +1,85 @@
+<div th:fragment="content">
+
+    <script src="/js/catalog.js"></script>
+
+    <section class="catalog-section">
+    <h2>Каталог премиум танков</h2>
+    <div class="catalog">
+        <div class="product-container" th:each="product : ${productList}">
+            <img th:src="@{${product.image}}" alt="Танк">
+            <h3 th:text="${product.title}"></h3>
+            <p th:text="${product.description}"></p>
+            <p>Цена: <span th:text="${product.price}"></span> руб.</p>
+        </div>
+    </div>
+    </section>
+
+    <button id="open-order-form">🛒 Оформить заказ</button>
+
+    <div id="order-form-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Оформление заказа</h2>
+            <form action="/submit/order" method="post">
+                <div class="form-group">
+                    <label for="customerName">Ваше имя:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">Дата рождения:</label>
+                    <input type="date" id="birthDate" name="birthDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname">Танковый ник:</label>
+                    <input type="text" id="nickname" name="nickname" required>
+                </div>
+
+                <div id="products-container">
+                    <div class="form-group product-group">
+                        <label for="product">Выберите товар:</label>
+                        <select id="product" name="product" required onchange="updateForm()">
+                            <option value="" data-price="0" selected disabled>Выберите товар</option>
+                            <option th:each="product : ${productList}" th:value="${product.id}" th:data-price="${product.price}" th:text="${product.title}"></option>
+                        </select>
+                        <label for="quantity">Количество:</label>
+                        <input id="quantity" type="number" name="quantity" min="0" value="" required oninput="this.value = this.value.replace(/[^0-9]/g, ''); updateForm();">
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Способ оплаты:</label>
+                    <select id="paymentMethod" name="paymentMethod">
+                        <option value="card">Банковская карта</option>
+                        <option value="wallet">Электронный кошелек</option>
+                        <option value="crypto">Криптовалюта</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Комментарий:</label>
+                    <textarea id="comment" name="comment" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="total-price">Итоговая стоимость:</label>
+                    <span id="total-price">0 руб.</span>
+                    <input type="hidden" id="total-price-input" name="totalPrice">
+                </div>
+
+                <button type="submit" class="submit-button">✅ Подтвердить заказ</button>
+            </form>
+        </div>
+    </div>
+</div>

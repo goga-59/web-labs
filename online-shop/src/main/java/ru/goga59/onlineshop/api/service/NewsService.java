@@ -1,6 +1,7 @@
 package ru.goga59.onlineshop.api.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.goga59.onlineshop.storage.model.NewsModel;
 import ru.goga59.onlineshop.storage.repository.NewsRepository;
@@ -14,7 +15,7 @@ public class NewsService {
     private final NewsRepository newsRepository;
 
     public List<NewsModel> getAllNews() {
-        return newsRepository.findAll();
+        return newsRepository.findAll(Sort.by(Sort.Order.asc("id")));
     }
 
 }

@@ -1,0 +1,10 @@
+<section th:fragment="content" class="news-section">
+    <h2>Последние новости</h2>
+    <div class="news-container">
+        <article th:each="news : ${newsList}">
+            <h3 th:text="${news.title}"></h3>
+            <p th:text="${news.content}"></p>
+            <small th:text="${news.date}"></small>
+        </article>
+    </div>
+</section>
