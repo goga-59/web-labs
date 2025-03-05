@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let totalPriceField = document.getElementById("total-price");
     let orderFormModal = document.getElementById("order-form-modal");
     let openOrderFormButton = document.getElementById("open-order-form");
+    let totalPriceInput = document.getElementById("total-price-input")
     let closeButton = document.querySelector(".close-button");
 
     function updateForm() {
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let quantity = parseInt(quantityInput.value) || 0;
         let total = pricePerUnit * quantity;
         totalPriceField.textContent = total + " руб.";
+        totalPriceInput.value = total
     }
 
     openOrderFormButton.addEventListener("click", function () {

@@ -20,16 +20,16 @@ public class OrderService {
     }
 
     public void createOrder(
-            String customerName, String birthDate, String email, String phone, String tankNick,
-            String paymentMethod, String comment, String product, Integer quantity
+            String customerName, String birthDate, String email, String phone, String nickname,
+            String paymentMethod, String comment, String product, Integer quantity, String totalPrice
     ) {
-        OrderModel order = new OrderModel(customerName, birthDate, email, phone, tankNick, paymentMethod, comment, product, quantity);
+        OrderModel order = new OrderModel(customerName, birthDate, email, phone, nickname, paymentMethod, comment, product, quantity, totalPrice);
         orderRepository.save(order);
     }
 
     public void updateOrder(
-            Long id, String customerName, String birthDate, String email, String phone, String tankNick,
-            String paymentMethod, String comment, String product, Integer quantity
+            Long id, String customerName, String birthDate, String email, String phone, String nickname,
+            String paymentMethod, String comment, String product, Integer quantity, String totalPrice
     ) {
         OrderModel order = orderRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Заказ не найден: "+ id));
 
@@ -37,12 +37,13 @@ public class OrderService {
         order.setBirthDate(birthDate);
         order.setEmail(email);
         order.setPhone(phone);
-        order.setNickname(tankNick);
+        order.setNickname(nickname);
         order.setPaymentMethod(paymentMethod);
         order.setComment(comment);
         order.setProduct(product);
         order.setQuantity(quantity);
-        
+        order.setTotalPrice(totalPrice);
+
         orderRepository.save(order);
     }
 

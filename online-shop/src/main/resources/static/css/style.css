@@ -287,7 +287,7 @@ nav ul li a:hover {
     width: 35%;
     text-align: center;
     margin: auto;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -389,8 +389,12 @@ nav ul li a:hover {
 }
 
 /* admin product */
-.admin-h1 {
-    margin: 120px auto;
+.admin-h1, .admin-h2 {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 120px auto 20px;
 }
 
 .admin-h2 {

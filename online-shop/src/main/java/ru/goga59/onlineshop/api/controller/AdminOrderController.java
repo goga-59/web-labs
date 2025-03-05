@@ -1,7 +1,6 @@
 package ru.goga59.onlineshop.api.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,8 @@ public class AdminOrderController {
     public String toAdminPage(Model model) {
         model.addAttribute("orders", orderService.getAllOrders());
         model.addAttribute("products", productService.getAllProducts());
-        return "admin_order";
+        model.addAttribute("content", "fragments/admin/admin_order");
+        return "admin_page";
     }
 
     @GetMapping("/delete/{id}")
@@ -36,13 +36,14 @@ public class AdminOrderController {
             @RequestParam String birthDate,
             @RequestParam String email,
             @RequestParam String phone,
-            @RequestParam String tankNick,
+            @RequestParam String nickname,
             @RequestParam String paymentMethod,
             @RequestParam String comment,
             @RequestParam String product,
-            @RequestParam Integer quantity
+            @RequestParam Integer quantity,
+            @RequestParam String totalPrice
     ) {
-        orderService.updateOrder(id, customerName, birthDate, email, phone, tankNick, paymentMethod, comment, product, quantity);
+        orderService.updateOrder(id, customerName, birthDate, email, phone, nickname, paymentMethod, comment, product, quantity, totalPrice);
         return "redirect:/admin/orders";
     }
 

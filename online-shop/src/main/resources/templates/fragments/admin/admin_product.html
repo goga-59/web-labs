@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Админ-панель</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<header>
-    <h1>Панель администратора</h1>
-    <nav>
-        <ul>
-            <li><a href="/admin/products">Товары</a></li>
-            <li><a href="/admin/orders">Заказы</a></li>
-            <li><a href="/admin/news">Новости</a></li>
-            <li><a href="/logout">Выйти</a></li>
-        </ul>
-    </nav>
-</header>
-
+<div th:fragment="content">
 <h2 class="admin-h2">Управление товарами</h2>
 <button id="open-add-product-form">➕ Добавить товар</button>
 
@@ -90,11 +71,11 @@
         <td th:text="${product.image}"></td>
         <td th:text="${product.price}"></td>
         <td>
-            <button type="button" onclick="openUpdateForm(this)"
+            <button type="button" onclick="openUpdateFormProduct(this)"
                th:attr="id=${product.id}, title=${product.title}, description=${product.description}, image=${product.image}, price=${product.price}">
                 ✏ Редактировать
             </button>
-            <button class="delete-button" th:attr="data-id=${product.id}" onclick="confirmDelete(this)">🗑 Удалить</button>
+            <button class="delete-button" th:attr="data-id=${product.id}" onclick="confirmDeleteProduct(this)">🗑 Удалить</button>
         </td>
     </tr>
 </table>
@@ -111,7 +92,7 @@
         });
     });
 
-    function openUpdateForm(button) {
+    function openUpdateFormProduct(button) {
         document.getElementById('id').value = button.getAttribute('id')
         document.getElementById('update-title').value = button.getAttribute('title');
         document.getElementById('update-description').value = button.getAttribute('description');
@@ -120,13 +101,11 @@
         document.getElementById('update-product-form').style.display = 'flex';
     }
 
-    function confirmDelete(button) {
+    function confirmDeleteProduct(button) {
         let productId = button.getAttribute("data-id");
         if (confirm("Вы уверены, что хотите удалить этот товар?")) {
             window.location.href = "/admin/products/delete/" + productId;
         }
     }
-
 </script>
-</body>
-</html>
+</div>

@@ -37,15 +37,22 @@ public class OrderModel {
 
     private Integer quantity;
 
-    public OrderModel(String customerName, String birthDate, String email, String phone, String tankNick, String paymentMethod, String comment, String product, Integer quantity) {
+    @Column(name = "total_price")
+    private String totalPrice;
+
+    public OrderModel(
+            String customerName, String birthDate, String email, String phone, String nickname,
+            String paymentMethod, String comment, String product, Integer quantity, String totalPrice
+    ) {
         this.name = customerName;
         this.birthDate = birthDate;
         this.email = email;
         this.phone = phone;
-        this.nickname = tankNick;
+        this.nickname = nickname;
         this.paymentMethod = paymentMethod;
         this.comment = comment;
         this.product = product;
         this.quantity = quantity;
+        this.totalPrice = totalPrice;
     }
 }

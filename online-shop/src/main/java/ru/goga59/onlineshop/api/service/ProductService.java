@@ -15,7 +15,7 @@ public class ProductService {
     private final ProductRepository catalogRepository;
 
     public List<ProductModel> getAllProducts() {
-        return catalogRepository.findAll(Sort.by(Sort.Order.asc("id")));
+        return catalogRepository.findAll(Sort.by("id"));
     }
 
     public void createProduct(String title, String description, String image, String price) {

@@ -16,7 +16,8 @@ public class AdminProductController {
     @GetMapping
     public String toAdminPage(Model model) {
         model.addAttribute("products", productService.getAllProducts());
-        return "admin_product";
+        model.addAttribute("content", "fragments/admin/admin_product");
+        return "admin_page";
     }
 
     @PostMapping("/create")
