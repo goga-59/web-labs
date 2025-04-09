@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить новость</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+    <main class="admin-form-wrapper">
+        <h1>Добавить новость</h1>
+        <form th:action="@{/admin/news/add}" th:object="${news}" method="post">
+            <label>Заголовок:</label>
+            <input type="text" th:field="*{title}" required />
+
+            <label>Краткое описание:</label>
+            <textarea th:field="*{content}" required></textarea>
+
+            <label>Изображение (имя файла):</label>
+            <input type="text" th:field="*{image}" required />
+
+            <label>Дата:</label>
+            <input type="date" th:field="*{date}" required />
+
+            <div class="form-buttons">
+                <button type="submit">Сохранить</button>
+                <a href="/admin/news" class="btn-back">Назад</a>
+            </div>
+        </form>
+    </main>
+
+</div>
+</body>
+</html>

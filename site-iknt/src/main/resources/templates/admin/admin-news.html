@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админка — Новости</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="~{admin/fragments/admin-header :: header}"></div>
+
+    <main class="container">
+        <h1>Управление новостями</h1>
+
+        <a href="/admin/news/add" class="btn-add">Добавить новость</a>
+
+        <table class="news-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Заголовок</th>
+                <th>Содержание</th>
+                <th>Дата</th>
+                <th>Изображение</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="news : ${newsList}">
+                <td th:text="${news.id}"></td>
+                <td th:text="${news.title}"></td>
+                <td th:text="${news.content}"></td>
+                <td th:text="${news.date}"></td>
+                <td th:text="${news.image}"></td>
+                <td>
+                    <a th:href="@{'/admin/news/edit/' + ${news.id}}" class="btn-edit">✏️</a>
+                    <a th:href="@{'/admin/news/delete/' + ${news.id}}" class="btn-delete" onclick="return confirm('Удалить новость?');">🗑️</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+
+</div>
+</body>
+</html>
