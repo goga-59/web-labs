@@ -16,4 +16,4 @@
 
 - [online-shop](./online-shop/) — ЛР 1, 3–5  
 - [calculator](./calculator/) — ЛР 2  
-- [iknt-site](./iknt-site/) — ЛР 6–7
+- [iknt-site](./site-iknt/) — ЛР 6–7
