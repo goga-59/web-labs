@@ -1,0 +1,30 @@
+<main th:fragment="content" class="container">
+
+    <h1>Управление преподавателями</h1>
+
+    <a href="/admin/professors/add" class="btn-add">Добавить преподавателя</a>
+
+    <table class="news-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Должность</th>
+            <th>Фото</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="professor : ${professors}">
+            <td th:text="${professor.id}"></td>
+            <td th:text="${professor.fullName}"></td>
+            <td th:text="${professor.position}"></td>
+            <td th:text="${professor.image}"></td>
+            <td>
+                <a th:href="@{'/admin/professors/edit/' + ${professor.id}}" class="btn-edit">✏️</a>
+                <a th:href="@{'/admin/professors/delete/' + ${professor.id}}" class="btn-delete" onclick="return confirm('Удалить преподавателя?');">🗑️</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>

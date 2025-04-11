@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>ИКНТ - Общая информация</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<div class="wrapper">
-<div th:replace="~{fragments/header :: header}"></div>
-
-<main class="container">
+<main th:fragment="content" class="container">
   <h1>Общая информация</h1>
 
   <section class="intro">
@@ -36,10 +25,8 @@
   <section class="partners">
     <h2>Наши партнёры</h2>
     <div class="partners-logos">
-      <!-- Пример логотипа партнёра -->
       <img src="/images/partners/parma.png" alt="Партнёр 1">
       <img src="/images/partners/kasp.png" alt="Партнёр 2">
-      <!-- Добавьте другие логотипы по аналогии -->
     </div>
   </section>
 
@@ -60,7 +47,3 @@
     </div>
   </section>
 </main>
-<div th:replace="~{fragments/footer :: footer}"></div>
-</div>
-</body>
-</html>

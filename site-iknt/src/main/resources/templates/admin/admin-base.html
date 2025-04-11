@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админка — ИКНТ</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+  <div th:replace="admin/fragments/admin-header :: header"></div>
+  <main th:replace="~{${content} :: content}"></main>
+</div>
+</body>
+</html>

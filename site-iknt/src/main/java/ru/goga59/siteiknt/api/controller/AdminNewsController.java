@@ -17,14 +17,15 @@ public class AdminNewsController {
     @GetMapping
     public String adminNews(Model model) {
         model.addAttribute("newsList", newsService.getAllNews());
-        return "admin/admin-news";
+        model.addAttribute("content", "admin/fragments/admin-news");
+        return "admin/admin-base";
     }
 
     @GetMapping("/edit/{id}")
     public String editNewsForm(@PathVariable Long id, Model model) {
         NewsModel news = newsService.getNewsById(id);
         model.addAttribute("news", news);
-        return "admin/news-edit";
+        return "admin/crud/news-edit";
     }
 
     @PostMapping("/edit")
@@ -43,7 +44,7 @@ public class AdminNewsController {
     public String addNews(Model model) {
         NewsModel news = new NewsModel();
         model.addAttribute("news", news);
-        return "admin/news-add";
+        return "admin/crud/news-add";
     }
 
     @PostMapping("/add")

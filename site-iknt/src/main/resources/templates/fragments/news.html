@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Новости ИКНТ</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<div class="wrapper">
-<div th:replace="~{fragments/header :: header}"></div>
-
-<main class="container">
+<main th:fragment="content" class="container">
     <h1>Новости</h1>
     <div class="news-grid">
         <div class="news-card" th:each="newsItem : ${newsList}">
@@ -22,8 +11,3 @@
         </div>
     </div>
 </main>
-
-<div th:replace="~{fragments/footer :: footer}"></div>
-</div>
-</body>
-</html>

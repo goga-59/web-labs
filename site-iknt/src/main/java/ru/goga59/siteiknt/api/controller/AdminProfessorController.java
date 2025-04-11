@@ -20,13 +20,14 @@ public class AdminProfessorController {
     public String adminProfessor(Model model) {
         List<ProfessorModel> professors = professorService.getAllProfessors();
         model.addAttribute("professors", professors);
-        return "admin/admin-professors";
+        model.addAttribute("content", "admin/fragments/admin-professors");
+        return "admin/admin-base";
     }
 
     @GetMapping("/add")
     public String addProfessor(Model model) {
         model.addAttribute("professor", new ProfessorModel());
-        return "admin/professors-add";
+        return "admin/crud/professors-add";
     }
 
     @PostMapping("/add")
@@ -39,7 +40,7 @@ public class AdminProfessorController {
     public String editProfessor(Model model, @PathVariable long id) {
         ProfessorModel professor = professorService.getProfessorById(id);
         model.addAttribute("professor", professor);
-        return "admin/professors-edit";
+        return "admin/crud/professors-edit";
     }
 
     @PostMapping("/edit")
