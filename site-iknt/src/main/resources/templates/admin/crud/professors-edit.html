@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактировать преподавателя</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <main class="admin-form-wrapper">
+    <h1>Редактировать преподавателя</h1>
+    <form th:action="@{/admin/professors/edit}" th:object="${professor}" method="post">
+      <input type="hidden" th:field="*{id}" />
+
+      <label>ФИО:</label>
+      <input type="text" th:field="*{fullName}" required />
+
+      <label>Должность:</label>
+      <input type="text" th:field="*{position}" required />
+
+      <label>Изображение:</label>
+      <input type="text" th:field="*{image}" required />
+
+      <div class="form-buttons">
+        <button type="submit">Сохранить</button>
+        <a href="/admin/professors" class="btn-back">Назад</a>
+      </div>
+    </form>
+  </main>
+
+</body>
+</html>

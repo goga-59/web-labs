@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в админ-панель ИКНТ</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="login-wrapper">
+    <form class="login-form" th:action="@{/login}" method="post">
+        <h2>Вход в админ-панель</h2>
+
+        <div class="form-group">
+            <label for="username">Логин</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-error" th:if="${param.error}">
+            Неверный логин или пароль
+        </div>
+
+        <button type="submit">Войти</button>
+    </form>
+</div>
+</body>
+</html>

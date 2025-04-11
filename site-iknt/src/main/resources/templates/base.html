@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ИКНТ</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+
+  <div th:replace="fragments/header :: header"></div>
+
+  <main th:replace="~{${content} :: content}"></main>
+
+  <div th:replace="fragments/footer :: footer"></div>
+
+</div>
+</body>
+</html>

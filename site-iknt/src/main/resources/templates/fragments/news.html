@@ -1,0 +1,13 @@
+<main th:fragment="content" class="container">
+    <h1>Новости</h1>
+    <div class="news-grid">
+        <div class="news-card" th:each="newsItem : ${newsList}">
+            <img th:src="@{/images/news/{img}(img=${newsItem.image})}" alt="Изображение новости">
+            <div class="news-content">
+                <h3 th:text="${newsItem.title}"></h3>
+                <p th:text="${newsItem.content}"></p>
+                <span class="news-date" th:text="${newsItem.date}"></span>
+            </div>
+        </div>
+    </div>
+</main>

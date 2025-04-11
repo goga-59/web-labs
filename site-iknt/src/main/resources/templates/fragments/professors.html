@@ -1,0 +1,12 @@
+<main th:fragment="content" class="container">
+    <h1>Преподаватели</h1>
+    <div class="professor-grid">
+        <div class="professor-card" th:each="professor : ${professors}">
+            <img th:src="@{/images/professors/{img}(img=${professor.image})}" alt="Фото преподавателя">
+            <div class="professor-info">
+                <h3 th:text="${professor.fullName}">Имя</h3>
+                <p th:text="${professor.position}">Должность</p>
+            </div>
+        </div>
+    </div>
+</main>
